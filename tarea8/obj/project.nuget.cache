@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "+pgoeBso0GRzpAIl7fw/+1mK28XaunJF5dhu83h3Idra3AnEDCO96VeYTQUAtiMmcrg+MYfIs39luc5a4C11Zw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Elmer\\Desktop\\tarea8\\tarea8.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Elmer\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

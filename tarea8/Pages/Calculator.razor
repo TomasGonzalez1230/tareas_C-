@@ -1,0 +1,50 @@
+@page "/calculator"
+
+<h1>calculadora</h1>
+
+<div class="mt-4">
+  <label>numero 1</label>
+  <input type="numer" @bind="num1"/>
+</div>
+
+<div class="mt-4">
+  <label>numero 2</label>
+  <input type="numer" @bind="num2"/>
+</div>
+
+<div class="mt-4">
+    <buttom class="btn btn-success" @onclick="suma">Suma</buttom>
+    <buttom class="btn btn-danger" @onclick="resta">Resta</buttom>
+    <buttom class="btn btn-primary" @onclick="multi">Multiplicacion</buttom>
+    <buttom class="btn btn-warning" @onclick="divi">Divicion</buttom>
+</div>
+
+<div class="mt-4">
+  resulatado @resultado
+</div>
+
+@code{
+
+  double num1;
+
+  double num2;
+
+  double resultado;
+
+  void suma(){
+    resultado = num1+num2;
+  }
+  
+  void resta(){
+    resultado = num1-num2;
+  }
+
+  void multi(){
+    resultado = num1*num2;
+  }
+
+  void divi(){
+    resultado = num1/num2;
+  }
+
+}

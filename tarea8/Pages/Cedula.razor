@@ -1,0 +1,96 @@
+@page "/cedula"
+
+<div class="mt-4">
+    <label for="cedula">cedula</label>
+    <input type="text" name="cedula" @bind="cedula">
+</div>
+
+<div class="mt-4">
+  <input @onclick="Consultar" class="btn btn-primary" type="button" value="Consulatar">
+</div>
+
+
+@if (personas.ok)
+{
+  <div class="container">
+      <div class="row">
+          <div class="col-md-2"><img style="width: 60px; height: 60px;" src="imagenes/escudopng.png" alt=""></div>
+          <div class="col" style="display: flex; flex-direction: column; justify-content: center; align-content: center;">
+            <div class="row">REPUBLICA DOMINICANA</div>
+            <div class="row">JUNTA CENTRAL ELECTORAL</div>
+            <div class="row" style="width: 400px;">CEDULA DE IDENTIDAD Y ELECTORAL</div>
+          </div>
+      </div>
+      <div class="row mt-2" style="-color: blue;">
+        <div class="col-md-2">
+            <img src="@personas.foto" style="width: 200px;">
+        </div>
+        <div class="col-md-8" style="-color: red;">  
+            <div class="row">
+              <label for="">lugar de nacimiento</label>
+              <p style="font-size: 18px;"> <b>@personas.LugarNacimiento</b> </p>
+            </div>
+            <div class="row">
+              <label for="">Fecha de nacimiento</label>
+              <p style="font-size: 18px;"> <b>@personas.FechaNacimiento</b> </p>
+            </div>
+            <div class="row">
+              <div class="col-md-6 d-flex" style="-color: darkgray;">
+                <label for="">Nacionalidad:</label>
+                <p style="font-size: 18px;"> <b>REPUBLICA DOMINICANAS</b> </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 d-flex" style="-color: darkorchid;">
+                <label for="" style="margin-right: 7px;">SEXO:</label>
+                <p> <b>@personas.IdSexo</b>  </p>
+              </div>
+              <div class="col-md-2" style="-color: chocolate;">
+                  <label for="">Sangre</label>
+              </div>
+              <div class="col-md-7 d-flex" style="-color: aqua;" >
+                <label for="" style="margin-right: 7px;">Estado Civil:</label>
+                <p> <b>@personas.IdEstadoCivil</b> </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 d-flex" style="-color: darkorchid;">
+                <label for="" style="margin-right: 7px;">EDAD:</label>
+                <p> <b>@personas.edad()</b>  </p>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="row">
+            <b> @personas.Nombres </b>
+          </div>
+          <div class="row">
+            <b> @personas.Apellido1 @personas.Apellido2 </b>
+          </div>
+        </div>
+      </div>
+  </div>
+}
+
+@code{
+
+  string cedula = "";
+  Personas personas = new Personas();
+  void Consultar(){
+
+    var url = "https://api.adamix.net/apec/cedula/" + cedula;
+
+    System.Net.WebClient client = new System.Net.WebClient();
+
+    string json = client.DownloadString(url);
+
+    
+
+    personas = Newtonsoft.Json.JsonConvert.DeserializeObject<Personas>(json);
+
+
+  }
+
+}
